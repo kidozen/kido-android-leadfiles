@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+            android:title="ShareFile settings">
+        <EditTextPreference
+                android:key="edittext_sharefile_user"
+                android:inputType="textEmailAddress"
+                android:summary="User"
+                android:dialogTitle="User"
+                android:defaultValue="gus@kidozen.com"
+                />
+
+        <EditTextPreference
+                android:key="edittext_sharefile_password"
+                android:defaultValue="kidozen*1"
+                android:inputType="textPassword"
+                android:summary="Password"
+                android:dialogTitle="Password"
+                />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:title="KidoZen settings">
+
+        <EditTextPreference
+                android:key="edittext_tenant"
+                android:defaultValue="https://armonia.kidocloud.com"
+                android:inputType="textWebEditText"
+                android:summary="Tenant"
+                android:dialogTitle="Tenant" />
+        <EditTextPreference
+                android:key="edittext_app"
+                android:defaultValue="tasks"
+                android:summary="Application"
+                android:dialogTitle="Application" />
+        <EditTextPreference
+                android:key="edittext_user"
+                android:defaultValue="armonia@kidozen.com"
+                android:inputType="textEmailAddress"
+                android:summary="User"
+                android:dialogTitle="User" />
+        <EditTextPreference
+                android:key="edittext_password"
+                android:defaultValue="pass"
+                android:inputType="textPassword"
+                android:summary="Password"
+                android:dialogTitle="Password" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
