@@ -1,8 +1,6 @@
 #Leadfiles application
 
-With this application you can link important documents stored on Sharefile, to the company's Leads from Salesforce.
-
-Also is a simple example that shows how to use the KidoZen SDK for Android with the following services:
+With this application you can browse ShareFile's folder structure that shows how to use the KidoZen SDK for Android with the following services:
 
 - `Storage`
 - `Enterprise APIs`
