@@ -9,23 +9,23 @@ With this application you can browse ShareFile's folder structure that shows how
 
 Get the souces from <a href="https://github.com/kidozen/kido-android-leadfiles.git">`github`</a> and open it using Android Studio or your favorite Android IDE
 
-<div class="row">
-  <div class="span3">
-		<div class="well">
-			Once deployed in the device launch the application and configure it to use your kidozen credentials by pressing the Action Button on the device. Here you must provide the following values:
-		</div>
-	</div>
-	<div class="span4">
-		<div class="well">
-			<li>Tenant: The url of the KidoZen marketplace</li>
-			<li>Application: The application name</li>
-			<li>User: The user account</li>
-			<li>Password: The password for the user</li>
-			<li>ShareFile user: Sharefile user name</li>
-			<li>ShareFile Password: Sharefile password</li>
-		</div>
-	</div>
-</div>
+Once deployed in the device launch the application and configure it to use your kidozen credentials by pressing the Action Button on the device. Here you must provide the following values:
+
+- Tenant: The url of the KidoZen marketplace
+- Application: The application name
+- User: The user account
+- Password: The password for the user
+- ShareFile user: Sharefile user name
+- ShareFile Password: Sharefile password
+
+Open the solution using Android Studio. To use Eclipse execute the following steps:
+
+- Open your workspace. Import "Existing Android Code Into Workspace"
+- Unckeck "LeadFiles/build/manifests/debug"
+- Select the "java" folder. Right click on it, then select "build path" -> "use as a source folder" 
+- Finally go to project, righ click on it, in the "configure build path" add kz.client-0.0.2.jar as a external library
+
+
 
 ##User interface
 
