@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="kz.client">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../kido-android/lib/kz.client.jar!/" />
+      <root url="jar://$PROJECT_DIR$/LeadFiles/libs/kz.client.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../kido-android/kz.client/src/main/java" />
+    </SOURCES>
+  </library>
+</component>

@@ -59,6 +59,15 @@ public class LeadFilesModel {
         _sharefile.GetFiles(path,_initCallback);
     }
 
+    public void GetFileLink(JSONObject tag) {
+    }
+
+    public void GetFileLeads(JSONObject tag) {
+    }
+
+    public void SendEmail(JSONObject tag) {
+    }
+
     private class ShareFile {
         private static final String KZ_SHAREFILE_GETAUTHID_METHODID = "getAuthID";
         private static final String KZ_SHAREFILE_GETFILES_METHODID = "folder";
@@ -114,6 +123,9 @@ public class LeadFilesModel {
             fileshare = application.LOBService(SHAREFILE_SERVICE);
         }
 
+        public void GetFileLinkUsingFileId(String fileId) {
+
+        }
         public void GetFiles(String path, ModelCallbacks callback)
         {
             _onShareFileCallback = callback;

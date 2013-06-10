@@ -10,13 +10,10 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.apache.http.HttpStatus;
@@ -25,7 +22,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import kidozen.client.ServiceEvent;
 
@@ -49,7 +45,7 @@ public class ShareFileFragmentActivity extends Activity implements AdapterView.O
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        PreferenceManager.setDefaultValues(this,R.xml.preferences,false);
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -105,7 +101,19 @@ public class ShareFileFragmentActivity extends Activity implements AdapterView.O
         try {
             tag= (JSONObject) view.getTag();
             if (tag.getString("type").equals("file")){
-                //todo: show file details
+
+                String message = "Creator: " + tag.getString("creatorname") +
+                        "\nFile name: " + tag.getString("filename") +
+                        "\nDisplay name: " + tag.getString("displayname") +
+                        "\nParent: " + tag.getString("parentname");
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(message).setTitle("File details");
+
+                AlertDialog dialog = builder.create();
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
+
                 return;
             }
         }
@@ -134,6 +142,35 @@ public class ShareFileFragmentActivity extends Activity implements AdapterView.O
         intent.setClass(ShareFileFragmentActivity.this, SetPreferenceActivity.class);
         startActivityForResult(intent, 0);
         return true;
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Option not implemented").setTitle("Information");
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        return super.onContextItemSelected(item);
+/*
+        JSONObject tag = (JSONObject) info.targetView.getTag();
+        switch(item.getOrder()) {
+            case 0: //Download
+                model.GetFileLink(tag);
+                break;
+            case 1: //Leads
+                model.GetFileLeads(tag);
+                break;
+            case 2: //Email
+                model.SendEmail(tag);
+                break;
+            case 3: //Assign
+
+                break;
+            default:
+                return super.onContextItemSelected(item);
+        }
+        */
     }
 
     @Override
@@ -182,6 +219,11 @@ public class ShareFileFragmentActivity extends Activity implements AdapterView.O
             ft.addToBackStack(null);
         }
         ft.commit();
+    }
+
+    @Override
+    public void onShareFileAdapterResponse(JSONObject file) {
+
     }
 
     @Override
