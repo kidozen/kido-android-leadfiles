@@ -10,6 +10,6 @@ import org.json.JSONObject;
 
 public interface ModelCallbacks {
     void onInitAndAuthenticate(ServiceEvent e);
-    void onShareFileAdapterResponse(JSONArray files);
-    void onShareFileAdapterResponse(JSONObject file);
+    void onShareFileAdapterResponse(JSONArray files, Exception ex);
+    void onShareFileAdapterResponse(JSONObject file, Exception ex);
 }

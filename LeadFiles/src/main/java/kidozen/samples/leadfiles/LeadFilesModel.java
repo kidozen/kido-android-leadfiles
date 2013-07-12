@@ -86,10 +86,9 @@ public class LeadFilesModel {
             public void onFinish(ServiceEvent e) {
                 if (e.StatusCode == HttpStatus.SC_OK) {
                     JSONArray filesAndFolder = (JSONArray) e.Response;
-                    _onShareFileCallback.onShareFileAdapterResponse(filesAndFolder);
+                    _onShareFileCallback.onShareFileAdapterResponse(filesAndFolder, null);
                 } else {
-                    //TODO: handle error
-                    Log.e(TAG, e.Body);
+                    _onShareFileCallback.onShareFileAdapterResponse(new JSONArray(), new Exception("Invalid server response"));
                 }
             }
         };
@@ -103,14 +102,12 @@ public class LeadFilesModel {
                         authId = ((JSONObject) e.Response).getString("authid");
                         GetFiles(_path, _onShareFileCallback);
                     } else {
-                        //TODO: handle error
-                        Log.e(TAG, e.Body);
+                        _onShareFileCallback.onShareFileAdapterResponse(new JSONArray(), new Exception("Invalid server response"));
                     }
                 }
-                catch (JSONException je)
+                catch (Exception je)
                 {
-                    //TODO: handle error
-                    Log.e(TAG, je.getMessage());
+                    _onShareFileCallback.onShareFileAdapterResponse(new JSONArray(), je);
                 }
             }
         };

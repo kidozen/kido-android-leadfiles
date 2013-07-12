@@ -177,6 +177,7 @@ public class ShareFileFragmentActivity extends Activity implements AdapterView.O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (preferencesChanged)
         {
+            model = new LeadFilesModel();
             model.Tenant = mSharedPreferences.getString("edittext_tenant","");
             model.App = mSharedPreferences.getString("edittext_app","");
             model.User = mSharedPreferences.getString("edittext_user","");
@@ -205,7 +206,17 @@ public class ShareFileFragmentActivity extends Activity implements AdapterView.O
     }
 
     @Override
-    public void onShareFileAdapterResponse(JSONArray files) {
+    public void onShareFileAdapterResponse(JSONArray files, Exception ex) {
+        if (ex!=null)
+        {
+            mProgressDialog.dismiss();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Check the settings and try again").setTitle("Initialization error");
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            return;
+        }
+
         if (files!=null || files.length()>0) {
             mProgressDialog.dismiss();
         }
@@ -222,7 +233,7 @@ public class ShareFileFragmentActivity extends Activity implements AdapterView.O
     }
 
     @Override
-    public void onShareFileAdapterResponse(JSONObject file) {
+    public void onShareFileAdapterResponse(JSONObject file, Exception ex) {
 
     }
 
